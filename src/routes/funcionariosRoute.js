@@ -1,9 +1,9 @@
-const { Router } = require('express')
-const FuncionariosController = require('../controller/FuncionariosController.js')
+import { Router } from 'express';
+import FuncionariosController from '../controller/FuncionariosController.js';
 
 const router = Router();
 
-router.post("/criaTabela", FuncionariosController.criarTabela)
+router.post("/criarTabela", FuncionariosController.criarTabela)
 
 router.get("/funcionarios", (req, res) => {
    try{
@@ -19,4 +19,4 @@ router.post("/funcionarios", (req, res) => {
    res.send("Post funcionando")
 })
 
-module.exports = router;
+export default router;

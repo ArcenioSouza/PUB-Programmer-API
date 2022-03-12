@@ -1,5 +1,5 @@
-const funcionarios = require('./funcionariosRoute.js')
+import funcionarios from './funcionariosRoute.js'
 
-module.exports = (app) => {
+export default (app) => {
    app.use(funcionarios)
 }

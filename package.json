@@ -17,5 +17,6 @@
   "bugs": {
     "url": "https://github.com/ArcenioSouza/Resilia-PUB/issues"
   },
-  "homepage": "https://github.com/ArcenioSouza/Resilia-PUB#readme"
+  "homepage": "https://github.com/ArcenioSouza/Resilia-PUB#readme",
+  "type": "module"
 }

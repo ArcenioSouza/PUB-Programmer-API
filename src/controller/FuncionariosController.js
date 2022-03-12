@@ -1,4 +1,4 @@
-const bdFuncionarios = require('../model/funcionarios.mjs')
+import { bdFuncionarios } from '../model/funcionarios.js';
 
 class FuncionariosController{
 
@@ -23,4 +23,4 @@ class FuncionariosController{
    }
 }
 
-module.exports = FuncionariosController;
+export default FuncionariosController;
