@@ -1,14 +1,16 @@
 import { bdFuncionarios } from '../model/funcionarios.js';
+import { verificaDadosFuncionarios } from '../services/verificaDadosValidos.js';
 
 class FuncionariosController{
 
+   //Método Create --------------------
    criarTabela(req, res){
       const tabela_funcionarios = `
          CREATE TABLE IF NOT EXISTS funcionarios (
             id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,
             nome VARCHAR(50),
             cargo VARCHAR(50),
-            salario FLOAT,
+            salario REAL,
             cpf INTEGER
          )
       `;
@@ -32,15 +34,25 @@ class FuncionariosController{
 
    }
 
+   //Método Create --------------------
    async salvarFuncionario(req, res) {
       try{
-         const funcionario =  await new Promise((resolve, reject) => {
-            return resolve({
+         const funcionario = await new Promise((resolve, reject) => {
+         
+            const result = {
                nome: req.body.nome,
                cargo: req.body.cargo,
                salario: parseFloat(req.body.salario),
                cpf: parseInt(req.body.cpf)
-            })
+            }
+            
+            const verificacaoDosDados = verificaDadosFuncionarios(result)
+
+            if(verificacaoDosDados === true){
+               resolve(result)
+            } else (
+               reject()
+            )
          })
          
          const infoFuncionarios = `
@@ -50,6 +62,7 @@ class FuncionariosController{
 
          bdFuncionarios.run(infoFuncionarios, (e) => {
             if (!e) {
+               res.status(201)
                res.send(
                `Dados do funcionario 
                nome: ${funcionario.nome} 
@@ -59,7 +72,31 @@ class FuncionariosController{
             }
          });
       } catch (error){
-         res.send("Erro ao salvar dados", error)
+         res.status(500)
+         res.send("Erro ao salvar dados do Funcionário")
+      }
+   }
+
+   //Método Read ----------------------
+   async buscarTodosFuncionarios(req, res){
+      const scriptSelect = `SELECT * FROM funcionarios`
+      try{
+         const results = await new Promise((resolve, reject) => {         
+            return (
+               bdFuncionarios.all(scriptSelect, (e, rows) => {
+                  if(!e){
+                     resolve(rows)
+                  } else {
+                     reject("Problema ao obter dados")
+                  }
+               })
+            )         
+         })
+
+         res.status(200).json(results)
+
+      } catch(error) {
+         res.status(500).json(error)
       }
    }
 }

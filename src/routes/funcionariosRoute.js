@@ -6,15 +6,7 @@ const funcionarios = new FuncionariosController()
 
 router.post("/criarTabela", funcionarios.criarTabela)
 
-router.get("/funcionarios", (req, res) => {
-   try{
-      res.status(200)
-      res.send("Get funcionando")
-   } catch(error){
-      res.status(500)
-      res.send("Erro no servidor", error)
-   }
-})
+router.get("/funcionarios", funcionarios.buscarTodosFuncionarios)
 
 router.post("/funcionarios", funcionarios.salvarFuncionario)
 
