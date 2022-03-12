@@ -1,4 +1,4 @@
-const bdFuncionarios = require('../model/funcionarios.js')
+const bdFuncionarios = require('../model/funcionarios.mjs')
 
 class FuncionariosController{
 
