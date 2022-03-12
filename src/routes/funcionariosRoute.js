@@ -2,8 +2,9 @@ import { Router } from 'express';
 import FuncionariosController from '../controller/FuncionariosController.js';
 
 const router = Router();
+const funcionarios = new FuncionariosController()
 
-router.post("/criarTabela", FuncionariosController.criarTabela)
+router.post("/criarTabela", funcionarios.criarTabela)
 
 router.get("/funcionarios", (req, res) => {
    try{
@@ -15,8 +16,6 @@ router.get("/funcionarios", (req, res) => {
    }
 })
 
-router.post("/funcionarios", (req, res) => {
-   res.send("Post funcionando")
-})
+router.post("/funcionarios", funcionarios.salvarFuncionario)
 
 export default router;
