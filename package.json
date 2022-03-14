@@ -18,5 +18,14 @@
     "url": "https://github.com/ArcenioSouza/Resilia-PUB/issues"
   },
   "homepage": "https://github.com/ArcenioSouza/Resilia-PUB#readme",
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "express": "^4.17.3",
+    "path": "^0.12.7",
+    "sqlite3": "^5.0.2",
+    "url": "^0.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
