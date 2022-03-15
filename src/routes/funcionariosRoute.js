@@ -10,4 +10,8 @@ router.get("/funcionarios", funcionarios.buscarTodosFuncionarios)
 
 router.post("/funcionarios", funcionarios.salvarFuncionario)
 
+router.get("/funcionarios/:id", funcionarios.buscarFuncionarioId)
+
+router.delete("/funcionarios/:id", funcionarios.excluirFuncionario)
+
 export default router;

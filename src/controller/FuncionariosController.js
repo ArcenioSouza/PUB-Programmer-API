@@ -99,6 +99,49 @@ class FuncionariosController{
          res.status(500).json(error)
       }
    }
+
+   //Método Read --------------------
+   buscarFuncionarioId(req, res){
+      try{
+         const id = req.params.id
+         const script = `SELECT * FROM funcionarios WHERE id = ${id}`
+         bdFuncionarios.get(script, (e, row) => {
+            if(!e){
+               if(row != undefined){
+                  res.status(200).json(row)
+               } else {
+                  res.status(404).send("Nenhum registro encontrado")
+               }
+            } else {
+               res.status(404).send("Não foi possivel acessar o banco de dados")
+            }            
+         })
+      } catch(error){
+         console.error(error)
+      }
+   }
+
+   //Método Delete --------------------
+   excluirFuncionario(req, res){
+      try{
+         const id = req.params.id
+         const script = `DELETE FROM funcionarios WHERE id = ${id}`
+         bdFuncionarios.run(script, (e) => {
+            if(!e){
+               res.status(200).send("Registro deletado com sucesso")
+            } else {
+               res.status(404).send("Não foi possivel deletar o registro")
+            }
+         })
+      } catch(error){
+         console.error(error)
+      }
+   }
+
+
+
+
+
 }
 
 export default FuncionariosController;
