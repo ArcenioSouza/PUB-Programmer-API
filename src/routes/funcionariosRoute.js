@@ -14,4 +14,6 @@ router.get("/funcionarios/:id", funcionarios.buscarFuncionarioId)
 
 router.delete("/funcionarios/:id", funcionarios.excluirFuncionario)
 
+router.put("/funcionarios/:id", funcionarios.atualizarFuncionario)
+
 export default router;

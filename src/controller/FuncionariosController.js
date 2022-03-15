@@ -138,6 +138,36 @@ class FuncionariosController{
       }
    }
 
+   //Método Update --------------------
+   async atualizarFuncionario(req, res){
+      try{
+         const novoFuncionario = await new Promise((resolve, reject) => {         
+            const result = {
+               nome: req.body.nome,
+               cargo: req.body.cargo,
+               salario: parseFloat(req.body.salario),
+               cpf: parseInt(req.body.cpf)
+            }
+            return resolve(result)
+         })
+
+         const id = req.params.id
+
+         const script = `UPDATE funcionarios SET nome='${novoFuncionario.nome}', cargo='${novoFuncionario.cargo}', salario=${novoFuncionario.salario}, cpf=${novoFuncionario.cpf} WHERE id = ${id}`
+
+         bdFuncionarios.run(script, (e) => {
+            if(!e){
+               res.status(200).send("Registro atualizado com sucesso")
+            } else {
+               res.status(404).send("Não foi possivel atualizar o registro")
+               console.error(e)
+            }
+         })
+      } catch(error){
+         console.error(error)
+      }
+   }
+
 
 
 
