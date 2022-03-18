@@ -1,5 +1,5 @@
-import funcionarios from './funcionariosRoute.js'
+import employees from './employeesRoute.js'
 
 export default (app) => {
-   app.use(funcionarios)
+   app.use(employees)
 }

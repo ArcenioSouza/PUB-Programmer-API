@@ -1,21 +1,21 @@
-import MetodosFuncionarios from '../DAO/metodosFuncionarios.js';
-import * as validacoes from '../services/validacoes.js'
+import MethodsEmployees from '../DAO/MethodsEmployees.js';
+import * as validations from '../services/validations.js'
 
-const metodos = new MetodosFuncionarios();
+const methods = new MethodsEmployees();
 
-class FuncionariosController{
+class EmployeesController{
 
    //Método Create --------------------
    createTable(req, res){
-      metodos.postTable()
+      methods.postTable()
       .then(response => res.sendStatus(201).send(response))
       .catch(response => res.sendStatus(400).send(response))
    }
 
    //Método Create --------------------
-   async saveFuncionario(req, res) {
+   async saveEmployees(req, res) {
       try{
-         const dataFuncionario = await new Promise((resolve, reject) => {
+         const dataEmployees = await new Promise((resolve, reject) => {
             resolve([
                req.body.nome,
                req.body.cargo,
@@ -27,18 +27,18 @@ class FuncionariosController{
          })
 
          //validações
-         const validaNome = validacoes.validaNome(dataFuncionario[0])
-         const validaCargo = validacoes.validaCargo(dataFuncionario[1])
-         const validaCpf = validacoes.validaCPF(String(dataFuncionario[3]))
+         const validationsName = validations.validationsName(dataEmployees[0])
+         const validationsOffice = validations.validationsOffice(dataEmployees[1])
+         const validationsCPF = validations.validationsCPF(String(dataEmployees[3]))
 
-         if(!validaNome){
+         if(!validationsName){
             throw new Error("Problemas com a validação do nome")
-         } else if(!validaCargo){
+         } else if(!validationsOffice){
             throw new Error("Cargo inexistente")
-         } else if(!validaCpf){
+         } else if(!validationsCPF){
             throw new Error("CPF inválido")
          } else {
-            metodos.postFuncionario(...dataFuncionario)
+            methods.postEmployees(...dataEmployees)
             .then(response => res.status(200).send(response))
             .catch(response => res.status(400).send(response))
          }         
@@ -49,32 +49,32 @@ class FuncionariosController{
    }
 
    //Método Read ----------------------
-   getFuncionarios(req, res){
-      metodos.getAllFuncionarios()
+   getEmployees(req, res){
+      methods.getAllEmployees()
       .then(response => res.status(200).send(response))
       .catch(response => res.status(400).send(response))
    }
 
    //Método Read --------------------
-   getFuncionarioId(req, res){
+   getEmployeesId(req, res){
       const id = req.params.id
-      metodos.getFuncionarioId(id)
+      methods.getEmployeesId(id)
       .then(response => res.status(200).send(response))
       .catch(response => res.status(400).send(response))
    }
 
    //Método Delete --------------------
-   deleteFuncionario(req, res){
+   deleteEmployees(req, res){
       const id = req.params.id
-      metodos.deleteFuncionario(id)
+      methods.deleteEmployees(id)
       .then(response => res.status(200).send(response))
       .catch(response => res.status(400).send(response))
    }
 
    //Método Update --------------------
-   async updateFuncionario(req, res){
+   async updateEmployees(req, res){
       try{
-         const novoFuncionario = await new Promise((resolve, reject) => {         
+         const Employees = await new Promise((resolve, reject) => {         
             resolve([
                req.params.id,
                req.body.nome,
@@ -82,21 +82,23 @@ class FuncionariosController{
                parseFloat(req.body.salario),
                parseInt(req.body.cpf)
             ])
+
+            reject("Não foi possivel pegar as informações do funcionário")   
          })
 
          //validações
-         const validaNome = validacoes.validaNome(novoFuncionario[1])
-         const validaCargo = validacoes.validaCargo(novoFuncionario[2])
-         const validaCpf = validacoes.validaCPF(String(novoFuncionario[4]))
+         const validationsName = validations.validationsName(Employees[1])
+         const validationsOffice = validations.validationsOffice(Employees[2])
+         const validationsCPF = validations.validationsCPF(String(Employees[4]))
 
-         if(!validaNome){
+         if(!validationsName){
             throw new Error("Problemas com a validação do nome")
-         } else if(!validaCargo){
+         } else if(!validationsOffice){
             throw new Error("Cargo inexistente")
-         } else if(!validaCpf){
+         } else if(!validationsCPF){
             throw new Error("CPF inválido")
          } else {
-            metodos.updateFuncionario(...novoFuncionario)
+            methods.updateEmployees(...Employees)
             .then(response => res.status(200).send(response))
             .catch(response => res.status(400).send(response)) 
          } 
@@ -107,4 +109,4 @@ class FuncionariosController{
    }
 }
 
-export default FuncionariosController;
+export default EmployeesController;
