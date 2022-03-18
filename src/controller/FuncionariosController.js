@@ -1,6 +1,5 @@
-import { bdFuncionarios } from '../model/funcionarios.js';
 import MetodosFuncionarios from '../DAO/metodosFuncionarios.js';
-import { verificaDadosFuncionarios } from '../services/verificaDadosValidos.js';
+import * as validacoes from '../services/validacoes.js'
 
 const metodos = new MetodosFuncionarios();
 
@@ -15,24 +14,42 @@ class FuncionariosController{
 
    //Método Create --------------------
    async saveFuncionario(req, res) {
-      const dataFuncionario = await new Promise((resolve, reject) => {
-         resolve([
-            req.body.nome,
-            req.body.cargo,
-            req.body.salario,
-            req.body.cpf
-         ]);
+      try{
+         const dataFuncionario = await new Promise((resolve, reject) => {
+            resolve([
+               req.body.nome,
+               req.body.cargo,
+               parseFloat(req.body.salario),
+               parseInt(req.body.cpf)
+            ]);
+   
+            reject("Não foi possivel pegar as informações do funcionário")         
+         })
 
-         reject("Não foi possivel pegar as informações do funcionário")         
-      })
+         //validações
+         const validaNome = validacoes.validaNome(dataFuncionario[0])
+         const validaCargo = validacoes.validaCargo(dataFuncionario[1])
+         const validaCpf = validacoes.validaCPF(String(dataFuncionario[3]))
 
-      metodos.postFuncionario(...dataFuncionario)
-      .then(response => res.send(response))
-      .catch(response => res.send(response))
+         if(!validaNome){
+            throw new Error("Problemas com a validação do nome")
+         } else if(!validaCargo){
+            throw new Error("Cargo inexistente")
+         } else if(!validaCpf){
+            throw new Error("CPF inválido")
+         } else {
+            metodos.postFuncionario(...dataFuncionario)
+            .then(response => res.send(response))
+            .catch(response => res.send(response))
+         }         
+
+      } catch(e){
+         res.send(e.message)
+      }
    }
 
    //Método Read ----------------------
-   async getFuncionarios(req, res){
+   getFuncionarios(req, res){
       metodos.getAllFuncionarios()
       .then(response => res.send(response))
       .catch(response => res.send(response))
@@ -69,11 +86,6 @@ class FuncionariosController{
       .then(response => res.send(response))
       .catch(response => res.send(response))       
    }
-
-
-
-
-
 }
 
 export default FuncionariosController;
