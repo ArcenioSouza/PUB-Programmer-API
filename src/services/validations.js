@@ -4,16 +4,6 @@ export function validationsName(name){
    return !!name.match(/^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\s*?|(?:[A-Z][^\s]*\s*?)(?!.*[ ]$))+$/gmu);
 }
 
-export async function validationId(id){
-		const method = new MethodsEmployees()
-		const response = await method.getEmployeeId(id);
-	if (response) {
-		true;
-	} else {
-		false;
-	}
-}
-
 console.log(validationId(2))
 
 export function validationsOffice(officeEmployee){
