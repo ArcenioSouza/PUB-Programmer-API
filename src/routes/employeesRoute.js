@@ -4,8 +4,6 @@ import EmployeesController from '../controller/EmployeesController.js';
 const router = Router();
 const employees = new EmployeesController()
 
-router.post("/createTable", employees.createTable)
-
 router.get("/employees", employees.getEmployees)
 
 router.post("/employee", employees.saveEmployee)

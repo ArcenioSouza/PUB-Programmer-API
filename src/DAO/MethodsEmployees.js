@@ -18,9 +18,9 @@ class MethodsEmployees{
 
             bdEmployees.run(scriptCreateTable, (e) =>{
                if(!e){
-                  resolve({"message": "Table created successfully"})
+                  resolve({"message": "Table employees created successfully"})
                } else {
-                  reject({"message": "Error creating table"})
+                  reject({"message": "Error creating table employees"})
                }
             })
          })

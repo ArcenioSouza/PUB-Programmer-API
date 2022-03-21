@@ -8,8 +8,8 @@ class EmployeesController{
    //Método Create --------------------
    createTable(req, res){
       methods.postTable()
-      .then(response => res.status(201).json(response))
-      .catch(response => res.status(400).json(response))
+      .then(response => console.log(response))
+      .catch(response => console.error(response))
    }
 
    //Método Create --------------------
