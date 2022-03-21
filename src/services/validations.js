@@ -1,10 +1,6 @@
-import MethodsEmployees from "../DAO/MethodsEmployees.js";
-
 export function validationsName(name){
    return !!name.match(/^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\s*?|(?:[A-Z][^\s]*\s*?)(?!.*[ ]$))+$/gmu);
 }
-
-console.log(validationId(2))
 
 export function validationsOffice(officeEmployee){
    const offices = ["Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"]
