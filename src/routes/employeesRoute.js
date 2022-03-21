@@ -8,12 +8,12 @@ router.post("/createTable", employees.createTable)
 
 router.get("/employees", employees.getEmployees)
 
-router.post("/employees", employees.saveEmployees)
+router.post("/employee", employees.saveEmployee)
 
-router.get("/employees/:id", employees.getEmployeesId)
+router.get("/employee/:id", employees.getEmployeeId)
 
-router.delete("/employees/:id", employees.deleteEmployees)
+router.delete("/employee/:id", employees.deleteEmployee)
 
-router.put("/employees/:id", employees.updateEmployees)
+router.put("/employee/:id", employees.updateEmployee)
 
 export default router;

@@ -18,9 +18,9 @@ class MethodsEmployees{
 
             bdEmployees.run(scriptCreateTable, (e) =>{
                if(!e){
-                  resolve("Table created successfully")
+                  resolve({"message": "Table created successfully"})
                } else {
-                  reject("Error creating table")
+                  reject({"message": "Error creating table"})
                }
             })
          })
@@ -30,7 +30,7 @@ class MethodsEmployees{
    }
 
    //Método Create --------------------
-   postEmployees(name, office, wage, cpf) {
+   postEmployee(name, office, wage, cpf) {
       try{ 
          return new Promise((resolve, reject) => {
             const scriptInsertEmployees = `
@@ -39,14 +39,11 @@ class MethodsEmployees{
             `;
             bdEmployees.run(scriptInsertEmployees, (e) => {
                if (!e) {
-                  resolve(
-                  `Data employees 
-                  name: ${name} 
-                  office: ${office}
-                  successfully inserted`
-                  );
+                  resolve({
+                     "message": `Data employees ${name}, office ${office}, successfully inserted`
+                  });
                } else {
-                  reject("Error saving data from employees")
+                  reject({"message error": "Error saving data from employees"})
                }
             });
          });
@@ -59,12 +56,12 @@ class MethodsEmployees{
    async getAllEmployees(){
       try{
          return new Promise((resolve, reject) => {   
-            const scriptSelectemployees = `SELECT * FROM employees`;            
-            bdemployees.all(scriptSelectemployees, (e, rows) => {
+            const scriptSelectEmployees = `SELECT * FROM employees`;            
+            bdEmployees.all(scriptSelectEmployees, (e, rows) => {
                if(!e){
                   resolve(rows)
                } else {
-                  reject("Problem getting data")
+                  reject({"message error": "Problem getting data"})
                }
             })         
          })
@@ -83,10 +80,10 @@ class MethodsEmployees{
                   if(row != undefined){
                      resolve(row)
                   } else {
-                     reject("No record found")
+                     reject({"message": "No record found"})
                   }
                } else {
-                  reject("Unable to access the database")
+                  reject({"message error": "Unable to access the database"})
                }            
             })
          })
@@ -102,9 +99,9 @@ class MethodsEmployees{
             const scriptDelete = `DELETE FROM employees WHERE id = ${id}`
             bdEmployees.run(scriptDelete, (e) => {
                if(!e){
-                  resolve("Successfully deleted record")
+                  resolve({"message": "Successfully deleted record"})
                } else {
-                  reject("Unable to delete record")
+                  reject({"message error": "Unable to delete record"})
                }
             })
          })
@@ -114,15 +111,15 @@ class MethodsEmployees{
    }
 
    //Método Update --------------------
-   async updateEmployee(id, newName, newOffice, newWage, newCpf){
+   updateEmployee(id, newName, newOffice, newWage, newCpf){
       try{
          return new Promise((resolve, reject) => {         
             const scriptUpdate = `UPDATE employees SET name='${newName}', office='${newOffice}', wage=${newWage}, cpf=${newCpf} WHERE id = ${id}`;
             bdEmployees.run(scriptUpdate, (e) => {
                if(!e){
-                  resolve("Registration successfully updated")
+                  resolve({"message": "Registration successfully updated"})
                } else {
-                  reject("Unable to update record")
+                  reject({"message error": "Unable to update record"})
                }
             })
          })

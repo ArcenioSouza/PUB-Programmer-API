@@ -8,82 +8,82 @@ class EmployeesController{
    //Método Create --------------------
    createTable(req, res){
       methods.postTable()
-      .then(response => res.sendStatus(201).send(response))
-      .catch(response => res.sendStatus(400).send(response))
+      .then(response => res.status(201).json(response))
+      .catch(response => res.status(400).json(response))
    }
 
    //Método Create --------------------
-   async saveEmployees(req, res) {
+   async saveEmployee(req, res) {
       try{
-         const dataEmployees = await new Promise((resolve, reject) => {
+         const dataEmployee = await new Promise((resolve, reject) => {
             resolve([
-               req.body.nome,
-               req.body.cargo,
-               parseFloat(req.body.salario),
+               req.body.name,
+               req.body.office,
+               parseFloat(req.body.wage),
                parseInt(req.body.cpf)
             ]);
    
-            reject("Não foi possivel pegar as informações do funcionário")         
+            reject({"message error": "Problems Accessing Employee Information"})         
          })
 
          //validações
-         const validationsName = validations.validationsName(dataEmployees[0])
-         const validationsOffice = validations.validationsOffice(dataEmployees[1])
-         const validationsCPF = validations.validationsCPF(String(dataEmployees[3]))
+         const validationsName = validations.validationsName(dataEmployee[0])
+         const validationsOffice = validations.validationsOffice(dataEmployee[1])
+         const validationsCPF = validations.validationsCPF(String(dataEmployee[3]))
 
          if(!validationsName){
-            throw new Error("Problemas com a validação do nome")
+            throw new Error("Problems validating name")
          } else if(!validationsOffice){
-            throw new Error("Cargo inexistente")
+            throw new Error("Position non-existent")
          } else if(!validationsCPF){
-            throw new Error("CPF inválido")
+            throw new Error("CPF invalid")
          } else {
-            methods.postEmployees(...dataEmployees)
-            .then(response => res.status(200).send(response))
-            .catch(response => res.status(400).send(response))
+            methods.postEmployee(...dataEmployee)
+            .then(response => res.status(200).json(response))
+            .catch(response => res.status(400).json(response))
          }         
 
       } catch(e){
-         res.status(400).send(e.message)
+         res.status(400).json(e.message)
       }
    }
 
    //Método Read ----------------------
    getEmployees(req, res){
       methods.getAllEmployees()
-      .then(response => res.status(200).send(response))
-      .catch(response => res.status(400).send(response))
+      .then(response => res.status(200).json(response))
+      .catch(response => res.status(400).json(response))
    }
 
    //Método Read --------------------
-   getEmployeesId(req, res){
+   getEmployeeId(req, res){
       const id = req.params.id
-      methods.getEmployeesId(id)
-      .then(response => res.status(200).send(response))
-      .catch(response => res.status(400).send(response))
+      methods.getEmployeeId(id)
+      .then(response => res.status(200).json(response))
+      .catch(response => res.status(400).json(response))
    }
 
    //Método Delete --------------------
-   deleteEmployees(req, res){
+   deleteEmployee(req, res){
       const id = req.params.id
-      methods.deleteEmployees(id)
-      .then(response => res.status(200).send(response))
-      .catch(response => res.status(400).send(response))
+      methods.deleteEmployee(id)
+      .then(response => res.status(200).json(response))
+      .catch(response => res.status(400).json(response))
    }
 
    //Método Update --------------------
-   async updateEmployees(req, res){
+   async updateEmployee(req, res){
       try{
          const Employees = await new Promise((resolve, reject) => {         
             resolve([
                req.params.id,
-               req.body.nome,
-               req.body.cargo,
-               parseFloat(req.body.salario),
+               req.body.name,
+               req.body.office,
+               parseFloat(req.body.wage),
                parseInt(req.body.cpf)
             ])
 
-            reject("Não foi possivel pegar as informações do funcionário")   
+            reject({"message error": "Problems Accessing Employee Information"})   
          })
 
          //validações
@@ -92,19 +92,19 @@ class EmployeesController{
          const validationsCPF = validations.validationsCPF(String(Employees[4]))
 
          if(!validationsName){
-            throw new Error("Problemas com a validação do nome")
+            throw new Error("Problems validating name")
          } else if(!validationsOffice){
-            throw new Error("Cargo inexistente")
+            throw new Error("Position non-existent")
          } else if(!validationsCPF){
-            throw new Error("CPF inválido")
+            throw new Error("CPF invalid")
          } else {
-            methods.updateEmployees(...Employees)
-            .then(response => res.status(200).send(response))
-            .catch(response => res.status(400).send(response)) 
+            methods.updateEmployee(...Employees)
+            .then(response => res.status(200).json(response))
+            .catch(response => res.status(400).json(response)) 
          } 
          
       } catch(e){
-         res.status(400).send(e.message)
+         res.status(400).json({"message error": e.message})
       }      
    }
 }
