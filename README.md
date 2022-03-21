@@ -46,6 +46,7 @@ npm start
 # Rotas da API
 
 Essa aplicação possui um conjunto de rotas que torna possível o uso de todos os verbos HTTP necessários para a realização do CRUD.
+Você pode utilizar essa api localmente seguindo as orientações acima ou pode utilizá-la remotamente através dessa url que está hospedada no servidor do Heroku `https://resilia-pub.herokuapp.com`.
 
 ### **1 - Salvar as informações de um funcionário**
 
