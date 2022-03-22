@@ -46,82 +46,18 @@ npm start
 # Rotas da API
 
 Essa aplicação possui um conjunto de rotas que torna possível o uso de todos os verbos HTTP necessários para a realização do CRUD.
-Você pode utilizar essa api localmente seguindo as orientações acima ou pode utilizá-la remotamente através dessa url que está hospedada no servidor do Heroku `https://resilia-pub.herokuapp.com`.
+Você pode utilizar essa api localmente seguindo as orientações acima e testando as rotas da API em seu localhost ou pode utilizá-la remotamente através dessa url que está hospedada no servidor do Heroku `https://resilia-pub.herokuapp.com`.
 
-### **1 - Salvar as informações de um funcionário**
+<details>
+<summary>
+<b>GET Employees</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://resilia-pub.herokuapp.com/employees`
+<br/><br/>
+<b>Response:</b>
+<br/>
 
-Para salvar um funcionário na API é usado o método HTTP `POST` no caminho `urlApi/employee`.
-
-Deverá ser passado no corpo da requisição as informações do funcionário em formato JSON segundo o modelo e propriedades abaixo:
-```
-{
-   "name": "Arcenio Souza",
-   "office": "Gerente",
-   "wage": 10000,
-   "cpf": 33132382801
-}
-``` 
-As informações de cadastro de funcionários passam por validações antes de serem salvas no banco de dados, portanto algumas regras no preenchimento das informações devem ser seguidas:
-
-**Regras para nome(name)**
-- Deve ter as iniciais em letras maiúsculas e restante em letras minúsculas;
-- Não pode haver espaços duplos entre as nomes;
-- Não pode haver espaço no inicio ou final do nome;
-
-**Regras para cargo(office)**
-- Os cargos permitidos na empresa são: "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro" e "Auxiliar de Cozinha". Qualquer cargo diferente desses não serão permitidos;
-
-**Regras para salario(wage)**
-- Os valores não devem conter letras ou cifrões;
-- Se o valor possuir casas decimais a separação ao digitar deve ser feita com ".";
-
-**Regras para CPF**
-- O numero deve ser válido segundo as regras de validação de CPF da Receita Federal que podem ser consultadas através desse link [Como é feita a validação do um CPF](https://www.calculadorafacil.com.br/computacao/validar-cpf)
-
-
-### **2 - Atualizar as informações de um funcionário**
-
-Para atualizar as informações um funcionário na API é usado o método HTTP `PUT` no caminho `urlApi/employee/:id`.
-
-Deverá ser passado como parâmetro um id existente no banco de dados na url da requisição e no corpo da requisição as informações do funcionário em formato JSON segundo o modelo e propriedades abaixo:
-```
-{
-   "name": "Arcenio Souza",
-   "office": "Gerente",
-   "wage": 10000,
-   "cpf": 33132382801
-}
-``` 
-Assim como para salvar as informações de um funcionário, os dados para atualização das informações também passam pelas mesmas validações descritas no tópico anterior.
-
-### **3 - Deletar as informações de um funcionário**
-
-Para deletar as informações um funcionário na API é usado o método HTTP `DELETE` no caminho `urlApi/employee/:id`.
-
-Deverá ser passado como parâmetro um id existente no banco de dados na url da requisição.
-
-### **4 - Buscar as informações de apenas um funcionário**
-
-Para buscar as informações um funcionário na API é usado o método HTTP `GET` no caminho `urlApi/employee/:id`.
-
-Deverá ser passado como parâmetro um id existente no banco de dados na url da requisição e a API retornará os dados do funcionário em formato JSON como o exemplo a seguir:
-
-`http://localhost:3000/employee/2`
-```
-{
-    "id": 2,
-    "name": "José Oliveira",
-    "office": "Copeiro",
-    "wage": 2500.7,
-    "cpf": 21256877929
-}
-```
-
-### **4 - Buscar as informações de todos os funcionários**
-
-Para buscar as informações de todos os funcionários na API é usado o método HTTP `GET` no caminho `urlApi/employees`.
-
-A API retornará um array de objetos em formato JSON como o exemplo abaixo:
 ```
 [
     {
@@ -161,6 +97,158 @@ A API retornará um array de objetos em formato JSON como o exemplo abaixo:
     }
 ]
 ```
+
+</details>
+
+<details>
+<summary>
+<b>GET Employee</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://resilia-pub.herokuapp.com/employee/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "id": 1,
+    "name": "Arcenio Souza",
+    "office": "Gerente",
+    "wage": 50000,
+    "cpf": 67346720008
+}
+```
+
+</details>
+
+<details>
+<summary>
+<b>POST Employee</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `POST https://resilia-pub.herokuapp.com/employee`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "name": "Arcenio Souza",
+    "office": "Gerente",
+    "wage": 50000,
+    "cpf": 67346720008
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Data employees Arcenio Souza, office Gerente, successfully inserted`
+}
+```
+<br/>
+<b>Validações:</b>
+<br/>
+
+| Parametros Body | Tipo     | Regras de validação                                                            |
+| :-------------- | :------- | :------------------------------------------------------------------------------|
+| `name`          | `string` | Iniciais em maiúscula; Sem espaços duplos; Sem espaço no inicio e final do nome|
+| `office`        | `string` | "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"  |
+| `wage`          | `number` | Apenas números e casas decimais separadas por ponto - Ex: 5878.47              | 
+| `cpf`           | `number` | Apenas números e aceita apenas cpfs válidos segundo as regras da RF            |   
+
+**Regras para nome(name)**
+- Deve ter as iniciais em letras maiúsculas e restante em letras minúsculas;
+- Não pode haver espaços duplos entre as nomes;
+- Não pode haver espaço no inicio ou final do nome;
+
+**Regras para cargo(office)**
+- Os cargos permitidos na empresa são: "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro" e "Auxiliar de Cozinha". Qualquer cargo diferente desses não serão permitidos;
+
+**Regras para salario(wage)**
+- Os valores não devem conter letras ou cifrões;
+- Se o valor possuir casas decimais a separação ao digitar deve ser feita com ".";
+
+**Regras para CPF**
+- O numero deve ser válido segundo as regras de validação de CPF da Receita Federal que podem ser consultadas através desse link [Como é feita a validação do um CPF](https://www.calculadorafacil.com.br/computacao/validar-cpf)
+
+</details>
+
+<details>
+<summary>
+<b>PUT Employee</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `PUT https://resilia-pub.herokuapp.com/employee/:id`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "name": "Arcenio Souza",
+    "office": "Gerente",
+    "wage": 50000,
+    "cpf": 67346720008
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Registration successfully updated"
+}
+```
+<br/>
+<b>Validações:</b>
+<br/>
+
+| Parametros Body | Tipo     | Regras de validação                                                            |
+| :-------------- | :------- | :------------------------------------------------------------------------------|
+| `name`          | `string` | Iniciais em maiúscula; Sem espaços duplos; Sem espaço no inicio e final do nome|
+| `office`        | `string` | "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"  |
+| `wage`          | `number` | Apenas números e casas decimais separadas por ponto - Ex: 5878.47              | 
+| `cpf`           | `number` | Apenas números e aceita apenas cpfs válidos segundo as regras da RF            |   
+
+**Regras para nome(name)**
+- Deve ter as iniciais em letras maiúsculas e restante em letras minúsculas;
+- Não pode haver espaços duplos entre as nomes;
+- Não pode haver espaço no inicio ou final do nome;
+
+**Regras para cargo(office)**
+- Os cargos permitidos na empresa são: "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro" e "Auxiliar de Cozinha". Qualquer cargo diferente desses não serão permitidos;
+
+**Regras para salario(wage)**
+- Os valores não devem conter letras ou cifrões;
+- Se o valor possuir casas decimais a separação ao digitar deve ser feita com ".";
+
+**Regras para CPF**
+- O numero deve ser válido segundo as regras de validação de CPF da Receita Federal que podem ser consultadas através desse link [Como é feita a validação do um CPF](https://www.calculadorafacil.com.br/computacao/validar-cpf)
+
+</details>
+
+<details>
+<summary>
+<b>DELETE Employee</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `DELETE https://resilia-pub.herokuapp.com/employee/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Successfully deleted record"
+}
+```    
+</details>
+<br/>
 
 # Créditos
 
