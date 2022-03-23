@@ -249,7 +249,6 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 }
 ```    
 </details>
-<br/>
 
 # :sparkles: Créditos
 
