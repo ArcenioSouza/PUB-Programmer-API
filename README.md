@@ -1,8 +1,8 @@
-# Resilia-PUB API
+# :beers: Resilia-PUB API
 
 O Resilia-PUB é uma API Rest de gerenciamento de PUBS construída em colaboração com [@Matheus Camba](https://github.com/MatheusCamba), [@Hugo Parada](https://github.com/haparada9), [@Milena Souza](https://github.com/Milena2712) e [@Gicelle Sena](https://github.com/Gicelle-sena). Cada colaborador ficou responsável por criar uma instância do banco de dados da API e posteriormente iremos usar os conhecimentos obtidos para juntarmos todas as instâncias e criar os seus relacionamentos. Com essa aplicação você será capaz de salvar, atualizar, pesquisar e deletar registros de funcionários do PUB. 
 
-# Ferramentas utilizadas
+# :hammer: Ferramentas utilizadas
 
 <div>
    <img width='50px' height='50px' src='https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/nodejs/nodejs-original.svg'>
@@ -15,7 +15,7 @@ O Resilia-PUB é uma API Rest de gerenciamento de PUBS construída em colaboraç
 </div>
 
 
-# Como utilizar a aplicação
+# :books: Como utilizar a aplicação
 
 ### **1 - Faça o clone do repositório**
 
@@ -43,7 +43,7 @@ npm start
 ```
 **Observação:** Essa aplicação será executada por padrão na porta 3000 do seu localHost, caso essa porta esteja sendo utilizada por outra aplicação basta mudar o valor da variável 'port' do arquivo 'app.js' para um valor de porta disponível em seu sistema.
 
-# Rotas da API
+# :airplane: Rotas da API
 
 Essa aplicação possui um conjunto de rotas que torna possível o uso de todos os verbos HTTP necessários para a realização do CRUD.
 Você pode utilizar essa api localmente seguindo as orientações acima e testando as rotas da API em seu localhost ou pode utilizá-la remotamente através dessa url que está hospedada no servidor do Heroku `https://resilia-pub.herokuapp.com`.
@@ -250,7 +250,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 </details>
 <br/>
 
-# Créditos
+# :sparkles: Créditos
 
 Ao professor [@LéoCosta](https://github.com/LeoCosta-dev) pelos ensinamentos e pelo apoio constante em aula e fora de aula para a realização desse projeto.
 
