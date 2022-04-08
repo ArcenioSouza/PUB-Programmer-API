@@ -5,7 +5,8 @@
   "main": "./src/app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./src/app.js"
+    "start": "node ./src/app.js",
+    "commit": "git-cz"
   },
   "repository": {
     "type": "git",
@@ -26,6 +27,12 @@
     "url": "^0.11.0"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0",
     "nodemon": "^2.0.15"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
