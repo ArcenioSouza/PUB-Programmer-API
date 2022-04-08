@@ -1,5 +1,5 @@
 import express from 'express';
-import EmployeesController from './controller/EmployeesController.js';
+import db from './config/dbConnect.js';
 import routes from './routes/index.js';
 
 const app = express();
@@ -10,7 +10,8 @@ const port = process.env.PORT || 3000
 
 app.listen(port, () => console.log(`Servidor funcionando na porta ${port}`))
 
-const postTable = new EmployeesController()
-postTable.createTable()
+db.on("error", () => console.log("Connection error"))
+db.once("open", () => console.log("successfully connected to database"))
+
 
 routes(app)

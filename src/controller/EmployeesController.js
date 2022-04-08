@@ -1,15 +1,10 @@
-import MethodsEmployees from '../DAO/MethodsEmployees.js';
 import * as validations from '../services/validations.js'
-
-const methods = new MethodsEmployees();
 
 class EmployeesController{
 
    //Método Create --------------------
    createTable(req, res){
-      methods.postTable()
-      .then(response => console.log(response))
-      .catch(response => console.error(response))
+      //...
    }
 
    //Método Create --------------------
@@ -38,9 +33,7 @@ class EmployeesController{
          } else if(!validationsCPF){
             throw new Error("CPF invalid")
          } else {
-            methods.postEmployee(...dataEmployee)
-            .then(response => res.status(200).json(response))
-            .catch(response => res.status(400).json(response))
+            //...
          }         
 
       } catch(e){
@@ -50,25 +43,19 @@ class EmployeesController{
 
    //Método Read ----------------------
    getEmployees(req, res){
-      methods.getAllEmployees()
-      .then(response => res.status(200).json(response))
-      .catch(response => res.status(400).json(response))
+      //...
    }
 
    //Método Read --------------------
    getEmployeeId(req, res){
       const id = req.params.id
-      methods.getEmployeeId(id)
-      .then(response => res.status(200).json(response))
-      .catch(response => res.status(400).json(response))
+      //...
    }
 
    //Método Delete --------------------
    deleteEmployee(req, res){
       const id = req.params.id
-      methods.deleteEmployee(id)
-      .then(response => res.status(200).json(response))
-      .catch(response => res.status(400).json(response))
+      //...
    }
 
    //Método Update --------------------
@@ -98,9 +85,7 @@ class EmployeesController{
          } else if(!validationsCPF){
             throw new Error("CPF invalid")
          } else {
-            methods.updateEmployee(...Employees)
-            .then(response => res.status(200).json(response))
-            .catch(response => res.status(400).json(response)) 
+            //...
          } 
          
       } catch(e){

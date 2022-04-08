@@ -28,6 +28,6 @@ const employeeSchema = new mongoose.Schema({
    versionKey: true
 })
 
-const employee = mongoose.model("employee", employeeSchema);
+const employee = mongoose.model("employees", employeeSchema);
 
 export default employee;
