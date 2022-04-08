@@ -8,10 +8,7 @@ O Resilia-PUB é uma API Rest de gerenciamento de PUBS construída em colaboraç
    <img align="center" width='50px' height='50px' src='https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/nodejs/nodejs-original.svg'>
    <img align="center" width='50px' height='50px' style="margin: 5px" src='https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/npm/npm-original-wordmark.svg'>
    <img align="center" width='50px' height='50px' style="margin: 5px" src='https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-plain.svg'>
-   <img align="center" width='50px' height='50px' style="background-color: #FFF; margin: 5px" src='https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/markdown/markdown-original.svg'>
-   <img align="center" width='100px' height='50px' style="background-color: #FFF; margin: 5px" src='https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/SQLite370.svg/382px-SQLite370.svg.png'>
-   <img align="center" width='50px' height='50px' style="margin: 5px" src='https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/vscode/vscode-original.svg'>
-   <img align="center" width='50px' height='50px' style="margin: 5px" src='https://cdn.freelogovectors.net/wp-content/uploads/2020/12/postman-logo.png'>
+   <img align="center" width='50px' height='50px' style="margin: 5px" src='https://raw.githubusercontent.com/devicons/devicon/2ae2a900d2f041da66e950e4d48052658d850630/icons/mongodb/mongodb-original.svg'> 
 </div>
 <br/>
 
@@ -35,7 +32,16 @@ Após o terminal entrar na pasta execute o comando abaixo para instalar todas as
 npm install
 ```
 
-### **3 - Execute a aplicação**
+### **3 - Criação do Banco de dados**
+
+O banco de dados usado na aplicação é o MongoDB, para utilização dele é necessário criar uma conta no MongoDB Atlas.
+Depois da conta criada vc irá criar um banco de dados e uma coleção e atribuir os valores de conexão as variáveis de ambiente.
+
+Para isso vc irá criar um arquivo `.env` na raiz do seu projeto e usar como exemplo o arquivo `.env.example` para atribuir os valores do seu banco de dados as variáveis de ambiente.
+
+Caso a conexão retorne algum problema basta verificar inconsistencias na URL responsável por fazer a conexão com o banco de dados que se encontra em `src/config/dbConnect.js`.
+
+### **4 - Execute a aplicação**
 
 Para executar a aplicação basta executar o comando abaixo em seu terminal.
 ```
@@ -64,35 +70,35 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
     {
         "id": 1,
         "name": "Arcenio Souza",
-        "office": "Gerente",
+        "job": "Gerente",
         "wage": 50000,
         "cpf": 67346720008
     },
     {
         "id": 2,
         "name": "José Oliveira",
-        "office": "Copeiro",
+        "job": "Copeiro",
         "wage": 2500.7,
         "cpf": 93009185081
     },
     {
         "id": 3,
         "name": "Marcos André",
-        "office": "Garçon",
+        "job": "Garçon",
         "wage": 1800,
         "cpf": 55855978095
     },
     {
         "id": 4,
         "name": "Francisco Junior",
-        "office": "Auxiliar de Cozinha",
+        "job": "Auxiliar de Cozinha",
         "wage": 1800,
         "cpf": 22789188009
     },
     {
         "id": 5,
         "name": "Weber Caetano",
-        "office": "Barman",
+        "job": "Barman",
         "wage": 2100.55,
         "cpf": 37842561044
     }
@@ -115,7 +121,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 {
     "id": 1,
     "name": "Arcenio Souza",
-    "office": "Gerente",
+    "job": "Gerente",
     "wage": 50000,
     "cpf": 67346720008
 }
@@ -136,7 +142,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 ```
 {
     "name": "Arcenio Souza",
-    "office": "Gerente",
+    "job": "Gerente",
     "wage": 50000,
     "cpf": 67346720008
 }
@@ -147,7 +153,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 
 ```
 {
-    "message": "Data employees Arcenio Souza, office Gerente, successfully inserted`
+    "message": "Data employees Arcenio Souza, job Gerente, successfully inserted`
 }
 ```
 <br/>
@@ -157,7 +163,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 | Parametros Body | Tipo     | Regras de validação                                                            |
 | :-------------- | :------- | :------------------------------------------------------------------------------|
 | `name`          | `string` | Iniciais em maiúscula; Sem espaços duplos; Sem espaço no inicio e final do nome|
-| `office`        | `string` | "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"  |
+| `job`        | `string` | "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"  |
 | `wage`          | `number` | Apenas números e casas decimais separadas por ponto - Ex: 5878.47              | 
 | `cpf`           | `number` | Apenas números e aceita apenas cpfs válidos segundo as regras da RF            |   
 
@@ -166,7 +172,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 - Não pode haver espaços duplos entre as nomes;
 - Não pode haver espaço no inicio ou final do nome;
 
-**Regras para cargo(office)**
+**Regras para cargo(job)**
 - Os cargos permitidos na empresa são: "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro" e "Auxiliar de Cozinha". Qualquer cargo diferente desses não serão permitidos;
 
 **Regras para salario(wage)**
@@ -191,7 +197,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 ```
 {
     "name": "Arcenio Souza",
-    "office": "Gerente",
+    "job": "Gerente",
     "wage": 50000,
     "cpf": 67346720008
 }
@@ -212,7 +218,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 | Parametros Body | Tipo     | Regras de validação                                                            |
 | :-------------- | :------- | :------------------------------------------------------------------------------|
 | `name`          | `string` | Iniciais em maiúscula; Sem espaços duplos; Sem espaço no inicio e final do nome|
-| `office`        | `string` | "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"  |
+| `job`        | `string` | "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"  |
 | `wage`          | `number` | Apenas números e casas decimais separadas por ponto - Ex: 5878.47              | 
 | `cpf`           | `number` | Apenas números e aceita apenas cpfs válidos segundo as regras da RF            |   
 
@@ -221,7 +227,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 - Não pode haver espaços duplos entre as nomes;
 - Não pode haver espaço no inicio ou final do nome;
 
-**Regras para cargo(office)**
+**Regras para cargo(job)**
 - Os cargos permitidos na empresa são: "Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro" e "Auxiliar de Cozinha". Qualquer cargo diferente desses não serão permitidos;
 
 **Regras para salario(wage)**
