@@ -8,7 +8,7 @@ const password = process.env.DB_PASSWORD;
 const database = process.env.DB_NAME;
 
 
-mongoose.connect(`mongodb+srv://${user}:${password}@${database}.gec0m.mongodb.net/databasepub?retryWrites=true&w=majority`)
+mongoose.connect(`mongodb+srv://${user}:${password}@${database}.gec0m.mongodb.net/DatabasePUB?retryWrites=true&w=majority`)
 
 let db = mongoose.connection;
 
