@@ -2,16 +2,17 @@ export function validationsName(name){
    return !!name.match(/^(?![ ])(?!.*[ ]{2})((?:e|da|do|das|dos|de|d'|D'|la|las|el|los)\s*?|(?:[A-Z][^\s]*\s*?)(?!.*[ ]$))+$/gmu);
 }
 
-export function validationsOffice(officeEmployee){
+export function validationsJob(officeEmployee){
    const offices = ["Gerente", "Garçon", "Copeiro", "Barman", "Cozinheiro", "Auxiliar de Cozinha"]
    const result = offices.filter(office => officeEmployee == office)
    return result[0] ? true : false;
 }
 
-export function validationsCPF(strCPF) {
+export function validationsCPF(cpf) {
 	let Sum;
 	let Rest;
 	Sum = 0;
+	let strCPF = String(cpf)
  if (strCPF == "00000000000") return false;
 
  for (let i=1; i<=9; i++) Sum = Sum + parseInt(strCPF.substring(i-1, i)) * (11 - i);
