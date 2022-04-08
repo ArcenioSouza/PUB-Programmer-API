@@ -15,3 +15,5 @@ db.once("open", () => console.log("successfully connected to database"))
 
 
 routes(app)
+
+export default app;
