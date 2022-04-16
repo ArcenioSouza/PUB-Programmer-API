@@ -34,8 +34,11 @@ class EmployeesController {
    //Método Read ----------------------
    getEmployees(req, res) {
       employees.find((error, employee) => {
-         if(!error)
-         res.status(200).json(employee)
+         if(error){
+            res.status(500).send({message: `Failed to fetch information - ${error}`})
+         } else {
+            res.status(200).json(employee)            
+         }
       })
    }
 
@@ -43,10 +46,10 @@ class EmployeesController {
    getEmployeeId(req, res) {
       const id = req.params.id;
       employees.findById(id, (error, employee) => {
-         if(!error){
-            res.status(200).json(employee)
-         } else {
+         if(error){
             res.status(500).send({message: `Failed to fetch information - ${error}`})
+         } else {
+            res.status(200).json(employee)            
          }
          
       })
