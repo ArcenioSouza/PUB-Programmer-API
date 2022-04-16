@@ -43,8 +43,12 @@ class EmployeesController {
    getEmployeeId(req, res) {
       const id = req.params.id;
       employees.findById(id, (error, employee) => {
-         if(!error)
-         res.status(200).json(employee)
+         if(!error){
+            res.status(200).json(employee)
+         } else {
+            res.status(500).send({message: `Failed to fetch information - ${error}`})
+         }
+         
       })
    }
 

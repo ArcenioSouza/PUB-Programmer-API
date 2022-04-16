@@ -3,7 +3,6 @@ import db from './config/dbConnect.js';
 import routes from './routes/index.js';
 import cors from 'cors';
 
-
 const app = express();
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())
