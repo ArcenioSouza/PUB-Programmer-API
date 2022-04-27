@@ -18,14 +18,14 @@ O Resilia-PUB é uma API Rest de gerenciamento de PUBS construída em colaboraç
 
 Para fazer o clone desse repositório basta copiar o código abaixo e colar em seu terminal.
 ```
-git clone https://github.com/ArcenioSouza/Resilia-PUB.git
+git clone https://github.com/ArcenioSouza/PUB-Programmer-API.git
 ```
 
 ### **2 - Instale as dependencias necessárias**
 
-Para instalar as dependencias entre na pasta Resilia-PUB usando o comando:
+Para instalar as dependencias entre na pasta PUB-Programmer-API usando o comando:
 ```
-cd Resilia-PUB
+cd PUB-Programmer-API
 ```
 Após o terminal entrar na pasta execute o comando abaixo para instalar todas as dependencias necessárias para execução da aplicação.
 ```
@@ -53,14 +53,16 @@ npm start
 # :airplane: Rotas da API
 
 Essa aplicação possui um conjunto de rotas que torna possível o uso de todos os verbos HTTP necessários para a realização do CRUD.
-Você pode utilizar essa api localmente seguindo as orientações acima e testando as rotas da API em seu localhost ou pode utilizá-la remotamente através dessa url que está hospedada no servidor do Heroku `https://resilia-pub.herokuapp.com`.
+Você pode utilizar essa api localmente seguindo as orientações acima e testando as rotas da API em seu localhost ou pode utilizá-la remotamente através dessa url que está hospedada no servidor do Heroku `https://pub-programmer.herokuapp.com/`.
+
+# 👨‍💼 Employees
 
 <details>
 <summary>
 <b>GET Employees</b>
 </summary>
 <br/>
-<b>Endpoint:</b> `GET https://resilia-pub.herokuapp.com/employees`
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/employees`
 <br/><br/>
 <b>Response:</b>
 <br/>
@@ -112,7 +114,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 <b>GET Employee</b>
 </summary>
 <br/>
-<b>Endpoint:</b> `GET https://resilia-pub.herokuapp.com/employee/:id`
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/employee/:id`
 <br/><br/>
 <b>Response:</b>
 <br/>
@@ -134,7 +136,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 <b>POST Employee</b>
 </summary>
 <br/>
-<b>Endpoint:</b> `POST https://resilia-pub.herokuapp.com/employee`
+<b>Endpoint:</b> `POST https://pub-programmer.herokuapp.com/employee`
 <br/><br/>
 <b>Body:</b>
 <br/>
@@ -189,7 +191,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 <b>PUT Employee</b>
 </summary>
 <br/>
-<b>Endpoint:</b> `PUT https://resilia-pub.herokuapp.com/employee/:id`
+<b>Endpoint:</b> `PUT https://pub-programmer.herokuapp.com/employee/:id`
 <br/><br/>
 <b>Body:</b>
 <br/>
@@ -244,7 +246,7 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 <b>DELETE Employee</b>
 </summary>
 <br/>
-<b>Endpoint:</b> `DELETE https://resilia-pub.herokuapp.com/employee/:id`
+<b>Endpoint:</b> `DELETE https://pub-programmer.herokuapp.com/employee/:id`
 <br/><br/>
 <b>Response:</b>
 <br/>
@@ -252,6 +254,557 @@ Você pode utilizar essa api localmente seguindo as orientações acima e testan
 ```
 {
     "message": "Successfully deleted record"
+}
+```    
+</details>
+
+# 🍛 Foods
+
+<details>
+<summary>
+<b>GET Foods</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/foods`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "625db5af8c0192d83d6164f6",
+    "title": "batata frita",
+    "description": "porção de batata frita",
+    "price": "R$16,00",
+    "__v": 0
+  },
+  {
+    "_id": "625f5e6c492c8096b654c5d6",
+    "title": "coxinha",
+    "description": "coxinha de frango com catupiry",
+    "price": "14",
+    "__v": 0,
+    "id": "625f5e6c492c8096b654c5d6"
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>GET Foods por Id</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/foods/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "625f5e6c492c8096b654c5d6",
+    "title": "coxinha",
+    "description": "coxinha de frango com catupiry",
+    "price": "14",
+    "__v": 0,
+    "id": "625f5e6c492c8096b654c5d6"
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>POST Foods</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `POST https://pub-programmer.herokuapp.com/foods`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "title": "batata frita",
+    "description": "porção de batata frita",
+    "price": "R$16,00",
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "_id": "625db5af8c0192d83d6164f6",
+    "title": "batata frita",
+    "description": "porção de batata frita",
+    "price": "R$16,00",
+    "__v": 0
+}
+```
+<br/>
+</details>
+
+<details>
+<summary>
+<b>PUT Foods</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `PUT https://pub-programmer.herokuapp.com/foods/:id`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "title": "batata frita",
+    "description": "porção de batata frita",
+    "price": "R$16,00",
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Food updated with success."
+}
+```
+</details>
+
+<details>
+<summary>
+<b>DELETE Foods</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `DELETE https://pub-programmer.herokuapp.com/foods/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Food deleted with success."
+}
+```    
+</details>
+
+# 🍹 Drinks
+
+<details>
+<summary>
+<b>GET Drinks</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/drinks`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "625dc131471a114aff0f0f64",
+    "title": "Amstel 600ml",
+    "description": "Cerveja Amstel de 600ml",
+    "price": "R$14,00",
+    "storage": 500,
+    "__v": 0
+  },
+  {
+    "_id": "625dc37e4722f7b88ccb14ec",
+    "title": "Budweiser 600ml",
+    "description": "Cerveja Budweiser de 600ml",
+    "price": "R$16,00",
+    "storage": 450,
+    "__v": 0
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>GET Drinks por Id</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/drinks/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "625dc131471a114aff0f0f64",
+    "title": "Amstel 600ml",
+    "description": "Cerveja Amstel de 600ml",
+    "price": "R$14,00",
+    "storage": 500,
+    "__v": 0
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>POST Drinks</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `POST https://pub-programmer.herokuapp.com/drinks`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "title": "Amstel 600ml",
+    "description": "Cerveja Amstel de 600ml",
+    "price": "R$14,00",
+    "storage": 500,
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "_id": "625dc131471a114aff0f0f64",
+    "title": "Amstel 600ml",
+    "description": "Cerveja Amstel de 600ml",
+    "price": "R$14,00",
+    "storage": 500,
+    "__v": 0
+  }
+```
+<br/>
+</details>
+
+<details>
+<summary>
+<b>PUT Drinks</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `PUT https://pub-programmer.herokuapp.com/drinks/:id`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "title": "Amstel 600ml",
+    "description": "Cerveja Amstel de 600ml",
+    "price": "R$14,00",
+    "storage": 500,
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Drink updated with success."
+}
+```
+</details>
+
+<details>
+<summary>
+<b>DELETE Drinks</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `DELETE https://pub-programmer.herokuapp.com/drinks/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Drink deleted with success."
+}
+```    
+</details>
+
+# 📦 Suppliers
+
+<details>
+<summary>
+<b>GET Suppliers</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/suppliers`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "625f56ac492c8096b654c5a7",
+    "name": "Heineken",
+    "cnpj": "90.581.604/0001-61",
+    "number": "965055544",
+    "email": "heineken@cervejaria.com.br",
+    "__v": 0
+  },
+  {
+    "_id": "62605bc75ef1c66c0b8cb18c",
+    "name": "Brahma Chopp",
+    "cnpj": "07.526.557/0001-00",
+    "number": "987246910",
+    "email": "brahma@chopp.com",
+    "__v": 0,
+    "id": "62605bc75ef1c66c0b8cb18c"
+  },
+  {
+    "_id": "62605c255ef1c66c0b8cb18f",
+    "name": "Patagonia Weisse",
+    "cnpj": "15.427.207/0002-03",
+    "number": "971982684",
+    "email": "patagonia@weisse.com",
+    "__v": 0
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>GET Suppliers por Id</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/suppliers/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "62605c255ef1c66c0b8cb18f",
+    "name": "Patagonia Weisse",
+    "cnpj": "15.427.207/0002-03",
+    "number": "971982684",
+    "email": "patagonia@weisse.com",
+    "__v": 0
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>POST Suppliers</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `POST https://pub-programmer.herokuapp.com/suppliers`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "name": "Patagonia Weisse",
+    "cnpj": "15.427.207/0002-03",
+    "number": "971982684",
+    "email": "patagonia@weisse.com",
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "_id": "62605c255ef1c66c0b8cb18f",
+    "name": "Patagonia Weisse",
+    "cnpj": "15.427.207/0002-03",
+    "number": "971982684",
+    "email": "patagonia@weisse.com",
+    "__v": 0
+}
+```
+<br/>
+</details>
+
+<details>
+<summary>
+<b>PUT Suppliers</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `PUT https://pub-programmer.herokuapp.com/suppliers/:id`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "name": "Patagonia Weisse",
+    "cnpj": "15.427.207/0002-03",
+    "number": "971982684",
+    "email": "patagonia@weisse.com",
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Suppliers updated with success."
+}
+```
+</details>
+
+<details>
+<summary>
+<b>DELETE Suppliers</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `DELETE https://pub-programmer.herokuapp.com/suppliers/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Suppliers deleted with success."
+}
+```    
+</details>
+
+# ⛔ Logins
+
+<details>
+<summary>
+<b>GET Logins</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/logins`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "6266f8b507e9021c6f93acb2",
+    "email": "adm@adm.com",
+    "password": "adm1234",
+    "__v": 0
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>GET Logins por Id</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `GET https://pub-programmer.herokuapp.com/logins/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+[
+  {
+    "_id": "6266f8b507e9021c6f93acb2",
+    "email": "adm@adm.com",
+    "password": "adm1234",
+    "__v": 0
+  }
+]
+```
+
+</details>
+
+<details>
+<summary>
+<b>POST Logins</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `POST https://pub-programmer.herokuapp.com/logins`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "email": "adm@adm.com",
+    "password": "adm1234",
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "_id": "6266f8b507e9021c6f93acb2",
+    "email": "adm@adm.com",
+    "password": "adm1234",
+    "__v": 0
+}
+```
+<br/>
+</details>
+
+<details>
+<summary>
+<b>PUT Logins</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `PUT https://pub-programmer.herokuapp.com/logins/:id`
+<br/><br/>
+<b>Body:</b>
+<br/>
+
+```
+{
+    "email": "adm@adm.com",
+    "password": "adm1234",
+}
+```
+<br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Login updated with success."
+}
+```
+</details>
+
+<details>
+<summary>
+<b>DELETE Logins</b>
+</summary>
+<br/>
+<b>Endpoint:</b> `DELETE https://pub-programmer.herokuapp.com/logins/:id`
+<br/><br/>
+<b>Response:</b>
+<br/>
+
+```
+{
+    "message": "Login deleted with success."
 }
 ```    
 </details>
